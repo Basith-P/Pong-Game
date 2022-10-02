@@ -28,13 +28,14 @@ is_game_over = False
 while not is_game_over:
     screen.update()
     ball.move()
-    time.sleep(.08)
+    time.sleep(ball.move_speed)
 
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
 
     if (ball.distance(l_paddle) < 50 and ball.xcor() < -290) or (ball.distance(r_paddle) < 50 and ball.xcor() > 290):
         ball.bounce_x()
+        ball.increase_speed()
 
     if (ball.xcor() < -400):
         ball.reset()
